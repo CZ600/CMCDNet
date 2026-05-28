@@ -117,3 +117,7 @@ mmseg/.mim
 
 # Pytorch
 *.pth
+
+# Model weights
+efficientnet_weights/
+resnet50_weights/

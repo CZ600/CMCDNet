@@ -7,8 +7,8 @@ _base_ = [
 optimizer = dict(type='Adam', lr=2e-4)
 
 data = dict(
-    samples_per_gpu=4,
-    workers_per_gpu=4,
+    samples_per_gpu=16,
+    workers_per_gpu=8,
 )
 
 # model settings

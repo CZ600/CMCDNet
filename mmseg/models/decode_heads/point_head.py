@@ -4,7 +4,10 @@
 import torch
 import torch.nn as nn
 from mmcv.cnn import ConvModule
-from mmcv.ops import point_sample
+try:
+    from mmcv.ops import point_sample
+except ModuleNotFoundError:
+    point_sample = None
 
 from mmseg.models.builder import HEADS
 from mmseg.ops import resize

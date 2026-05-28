@@ -1,3 +1,4 @@
+import random
 from collections.abc import Sequence
 import os.path as osp
 import mmcv

@@ -3,7 +3,10 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from mmcv.ops import sigmoid_focal_loss as _sigmoid_focal_loss
+try:
+    from mmcv.ops import sigmoid_focal_loss as _sigmoid_focal_loss
+except ModuleNotFoundError:
+    _sigmoid_focal_loss = None
 
 from ..builder import LOSSES
 from .utils import weight_reduce_loss
@@ -269,7 +272,7 @@ class FocalLoss(nn.Module):
             reduction_override if reduction_override else self.reduction)
         if self.use_sigmoid:
             num_classes = pred.size(1)
-            if torch.cuda.is_available() and pred.is_cuda:
+            if _sigmoid_focal_loss is not None and torch.cuda.is_available() and pred.is_cuda:
                 if target.dim() == 1:
                     one_hot_target = F.one_hot(target, num_classes=num_classes)
                 else:

@@ -9,7 +9,7 @@ from .transforms import (CLAHE, AdjustGamma, Normalize, Pad,
                          RandomFlip, RandomRotate, Rerange, Resize, RGB2Gray,
                          SegRescale, StackByChannel, NormalizeByKey)
 
-from .water_change import wc_LoadImageFromFile, wc_Normalize, wc_StackByChannel, wc_SelectChannels
+from .water_change import wc_LoadImageFromFile, wc_Normalize, wc_PhotoMetricDistortion, wc_SelectChannels, wc_StackByChannel
 
 __all__ = [
     'Compose', 'to_tensor', 'ToTensor', 'ImageToTensor', 'ToDataContainer',
@@ -18,5 +18,5 @@ __all__ = [
     'Normalize', 'SegRescale', 'PhotoMetricDistortion', 'RandomRotate',
     'AdjustGamma', 'CLAHE', 'Rerange', 'RGB2Gray', 'RandomCutOut',
     'GSCNNFormatBundle', 'StackByChannel', 'NormalizeByKey',
-    'wc_LoadImageFromFile', 'wc_Normalize', 'wc_StackByChannel', 'wc_SelectChannels',
+    'wc_LoadImageFromFile', 'wc_Normalize', 'wc_PhotoMetricDistortion', 'wc_SelectChannels', 'wc_StackByChannel',
 ]

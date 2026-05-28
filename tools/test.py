@@ -11,6 +11,14 @@ import torch
 from mmcv.parallel import MMDataParallel, MMDistributedDataParallel
 from mmcv.runner import (get_dist_info, init_dist, load_checkpoint,
                          wrap_fp16_model)
+
+# PyTorch 2.6 changed default to weights_only=True; patch mmcv to retain old behavior
+_orig_torch_load = torch.load
+def _patched_load(*args, **kwargs):
+    kwargs.setdefault('weights_only', False)
+    return _orig_torch_load(*args, **kwargs)
+import mmcv.runner.checkpoint
+mmcv.runner.checkpoint.torch.load = _patched_load
 from mmcv.utils import DictAction
 
 from mmseg.apis import multi_gpu_test, single_gpu_test

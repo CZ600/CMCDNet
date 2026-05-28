@@ -1,7 +1,9 @@
 # Copyright (c) OpenMMLab. All rights reserved.
+import os
+os.environ.setdefault('HF_HUB_OFFLINE', '1')
+
 import argparse
 import copy
-import os
 import os.path as osp
 import time
 import warnings

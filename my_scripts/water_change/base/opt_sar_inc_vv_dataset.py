@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'WCDataset'
-data_root = '../data'
+data_root = '/root/autodl-fs/data'
 classes = ("bg", "increase")
 palette=((0,0,0), (255, 0, 0))
 
@@ -33,7 +33,7 @@ test_pipeline = [
 ]
 
 data = dict(
-    samples_per_gpu=96,
+    samples_per_gpu=16,
     workers_per_gpu=16,
     train=dict(
         type=dataset_type,
@@ -41,6 +41,7 @@ data = dict(
         img_dir='train/opt',
         aux_dir='train/vv',
         ann_dir='train/flood_vv',
+        split='split/train_10pct.txt',
         pipeline=train_pipeline,
         classes=classes,
         palette=palette
